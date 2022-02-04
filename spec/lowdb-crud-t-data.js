@@ -19,7 +19,7 @@ class LowdbCrudTestData {
   // LowdbCrudTestData.get_person_item_list()
   static get_person_item_list() {
     const person_list_tmpl = `
-    [{{#repeat 12}}
+    [{{#repeat 20}}
       {
         "id": {{@index}},
         "name": "{{firstName}}",

@@ -19,3 +19,18 @@ git push -u origin main
 ```
 npx jsdoc src -r -d src-jsdoc
 ```
+
+
+## documentation
+```
+npx documentation src -r -d src-jsdoc
+npx documentation build src/lowdb-crud.js -f html --shallow -o src-docs
+npx documentation build src/lowdb-crud.js -f md --shallow -o src-docs-md
+
+npx documentation readme src/lowdb-crud.js  --section=Documentation
+
+```
+
+## Resources
+- https://github.com/documentationjs/
+- https://github.com/documentationjs/documentation

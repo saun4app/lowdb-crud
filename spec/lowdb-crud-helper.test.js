@@ -1,6 +1,6 @@
 import * as path from 'path'
 import * as assert from 'assert'
-import dummyjson from 'dummy-json';
+import lodash from 'lodash'
 
 import { LowdbCrud } from '../src/index.js'
 import { LowdbCrudHelper } from '../src/lowdb-crud-helper.js'
@@ -15,20 +15,16 @@ describe('LowdbCrud', () => {
   test_class()
   test_main_object(main_obj)
 
-  test_read_one(main_obj)
-
-  /*
-      test_create_one(main_obj, person_list[1])
-      test_create_multi(main_obj, person_list)
-      test_read_one(main_obj)
-      test_read_multi(main_obj)
-      test_update_one(main_obj)
-      test_update_multi(main_obj)
-      test_upsert_one(main_obj)
-      test_upsert_multi(main_obj)
-      test_delete_one(main_obj)
-      test_delete_multi(main_obj)
-      */
+  test_create_one(main_obj, person_list)
+  test_create_multi(main_obj, person_list)
+  test_read_one(main_obj, person_list)
+  test_read_multi(main_obj, person_list)
+  test_update_one(main_obj, person_list)
+  test_update_multi(main_obj, person_list)
+  test_upsert_one(main_obj, person_list)
+  test_upsert_multi(main_obj, person_list)
+  test_delete_one(main_obj, person_list)
+  test_delete_multi(main_obj, person_list)
 })
 
 function test_class() {
@@ -45,10 +41,10 @@ function test_main_object(main_obj) {
   })
 }
 
-function test_create_one(main_obj, person_obj) {
+function test_create_one(main_obj, person_list) {
   const param_obj = {
     'table_name': 'first_person_list',
-    'row_obj': person_obj
+    'row_obj': person_list[1]
   }
   const result_uuid = LowdbCrudHelper.create_one(main_obj, param_obj)
 
@@ -71,9 +67,9 @@ function test_create_multi(main_obj, person_list) {
   })
 }
 
-function test_read_one(main_obj) {
+function test_read_one(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 1 } // must be uniue value
+  param_obj['value_filter_obj'] = lodash.pick(person_list[2], ['age', 'name']) // must be uniue value
   param_obj['col_select_list'] = ['name', 'age']
 
   const result_obj = LowdbCrudHelper.read_one(main_obj, param_obj)
@@ -85,9 +81,9 @@ function test_read_one(main_obj) {
   })
 }
 
-function test_read_multi(main_obj) {
+function test_read_multi(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'age': 51 }
+  param_obj['value_filter_obj'] = lodash.pick(person_list[3], ['age', 'name'])
   param_obj['col_select_list'] = ['name', 'age']
 
   const result_list = LowdbCrudHelper.read_multi(main_obj, param_obj)
@@ -99,9 +95,9 @@ function test_read_multi(main_obj) {
   })
 }
 
-function test_update_one(main_obj) {
+function test_update_one(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 1, 'age': 51 }
+  param_obj['value_filter_obj'] = lodash.pick(person_list[4], ['age', 'name'])
   param_obj['update_obj'] = { 'name': 'Joslyn' }
 
   const result_obj = LowdbCrudHelper.update_one(main_obj, param_obj)
@@ -113,9 +109,9 @@ function test_update_one(main_obj) {
   })
 }
 
-function test_upsert_one(main_obj) {
+function test_upsert_one(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 4, 'age': 57 }
+  param_obj['value_filter_obj'] = lodash.pick(person_list[5], ['age', 'name'])
   param_obj['update_obj'] = { 'id': 4, 'name': 'Firstname', 'age': 47 }
 
   const result_obj = LowdbCrudHelper.upsert_one(main_obj, param_obj)
@@ -127,9 +123,9 @@ function test_upsert_one(main_obj) {
   })
 }
 
-function test_update_multi(main_obj) {
+function test_update_multi(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 2, 'age': 51 }
+  param_obj['value_filter_obj'] = lodash.pick(person_list[6], ['age', 'name'])
   param_obj['update_obj'] = { 'name': 'Joslyn' }
 
   const result_obj = LowdbCrudHelper.update_multi(main_obj, param_obj)
@@ -142,9 +138,9 @@ function test_update_multi(main_obj) {
 
 }
 
-function test_upsert_multi(main_obj) {
+function test_upsert_multi(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 1, 'age': 51 }
+  param_obj['value_filter_obj'] = lodash.pick(person_list[7], ['age', 'name'])
   param_obj['update_obj'] = { 'name': 'Joslyn' }
 
   const result_obj = LowdbCrudHelper.upsert_multi(main_obj, param_obj)
@@ -157,9 +153,9 @@ function test_upsert_multi(main_obj) {
 
 }
 
-function test_delete_one(main_obj) {
+function test_delete_one(main_obj, person_list) {
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 2 } // must be uniue value
+  param_obj['value_filter_obj'] = lodash.pick(person_list[8], ['age', 'name']) // must be uniue value
 
   const result_uuid = LowdbCrudHelper.delete_one(main_obj, param_obj)
   console.log(result_uuid)
@@ -169,10 +165,10 @@ function test_delete_one(main_obj) {
   })
 }
 
-function test_delete_multi(main_obj) {
+function test_delete_multi(main_obj, person_list) {
 
   const param_obj = { 'table_name': 'first_person_list' }
-  param_obj['value_filter_obj'] = { 'id': 0 } // must be uniue value
+  param_obj['value_filter_obj'] = lodash.pick(person_list[9], ['age', 'name'])
 
   const uuid_list = LowdbCrudHelper.delete_multi(main_obj, param_obj)
   console.log(uuid_list)

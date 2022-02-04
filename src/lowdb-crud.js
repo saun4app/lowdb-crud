@@ -17,36 +17,55 @@ import { LowdbCrudHelper } from './lowdb-crud-helper.js'
  * In terms of testing, <a href='https://github.com/jasmine/jasmine-npm' target='_blank'>jasmine</a> can be used by default.  Other test frameworks may need additional configuration because <a href='https://github.com/typicode/lowdb' target='_blank'>lowdb 3</a> is a pure ESM package.
  *
  * @example
- *   Table data structure:
+ *   Sample data:
+ *     const person_list = [{"name":"Alexa", "age": 35},
+ *                          {"name":"Drew", "age": 21}]
  *
+ *     const phone_list =  [{"home":"234-567-8901", "cell":"234-567-8900"},
+ *                          {"home":"234-789-8901", "cell":"234-789-8900"}]
+ *
+ * @example
+ *   Instantiate a LowdbCrud object:
+ *       import { LowdbCrud } from 'lowdb-crud'
+ *       const my_obj = new LowdbCrud({'db_file':'/home/my-app/data.json'})
+ *
+ * @example
+ *   Adding data:
+ *
+ *   let param_obj = {'table_name': 'person', 'row_obj_list': person_list}
+ *   const person_uuid_list = my_obj.create(param_obj)
+ *
+ *   param_obj = {'table_name': 'phone', 'row_obj_list': phone_list}
+ *   const phone_uuid_list = my_obj.create(param_obj)
+ *
+ * @example
+ *   my_obj.attr.db_obj.data has the following data:
  *     {
- *       "person":[{"name":"Alexa", "age": 35},
- *                 {"name":"Drew", "age": 21}],
- *       "phone":[{"home":"234-567-8901", "cell":"234-567-8900"},
- *                "home":"234-789-8901", "cell":"234-789-8900"]
+ *       "person":[{"uuid": "sUQT2zDUEGPEWMKxkbuKff", "name":"Alexa", "age": 35},
+ *                 {"uuid": "cTAA6KsiP4kjRvwDKZbMTL", "name":"Drew", "age": 21}],
+ *       "phone":[{"uuid": "o3wFgSyu8XALCMDQCSu1x8", "home":"234-567-8901", "cell":"234-567-8900"},
+ *                {"uuid": "hrFiDi8wdSqCfEHrcbmTJf","home":"234-789-8901", "cell":"234-789-8900"}]
  *      }
  *
  * @example
- *   Object instantiation:
+ *    my_obj.attr.db_obj.data['person'] has the following data:
+ *      [{"uuid": "sUQT2zDUEGPEWMKxkbuKff", "name":"Alexa", "age": 35},
+         {"uuid": "cTAA6KsiP4kjRvwDKZbMTL", "name":"Drew", "age": 21}]
  *
- *       const param_obj = {'db_file':'/home/my-app/data.json'}
- *       const my_obj = new LowdbCrud(param_obj)
+ *    my_obj.attr.db_obj.data['phone'] has the following data:
+ *      [{"uuid": "o3wFgSyu8XALCMDQCSu1x8", "home":"234-567-8901", "cell":"234-567-8900"},
+ *       {"uuid": "hrFiDi8wdSqCfEHrcbmTJf", "home":"234-789-8901", "cell":"234-789-8900"}]
  *
- *   The database object:
+ * @example
+ *   The database object and data object can be manipulated using lowdb and lodash:
  *       my_obj.attr.db_obj
- *
- *   The data object
  *       my_obj.attr.db_obj.data
- *
- *   The tables:
- *       my_obj.attr.db_obj.data['person']
- *       my_obj.attr.db_obj.data['phone']
  *
  * @param {Object} param_obj - {'db_file': 'full_path'}
  *
  */
 class LowdbCrud {
-  constructor(param_obj = {}) {
+  constructor(param_obj) {
     LowdbCrudHelper.init_attr(this, param_obj)
     LowdbCrudHelper.init_db(this, param_obj)
   }
@@ -73,7 +92,7 @@ class LowdbCrud {
    *
    * @return {array} An uuid array of created rows.
    */
-  create(param_obj = {}) {
+  create(param_obj) {
     return LowdbCrudHelper.create_multi(this, param_obj)
   }
 
@@ -101,7 +120,7 @@ class LowdbCrud {
    * @return {array} An row object array that looks like
    *                 [{"name":"Drew", "age": 21}].
    */
-  read(param_obj = {}) {
+  read(param_obj) {
     return LowdbCrudHelper.read_multi(this, param_obj)
   }
 
@@ -125,7 +144,7 @@ class LowdbCrud {
    *
    * @return {array} An uuid array of updated rows.
    */
-  update(param_obj = {}) {
+  update(param_obj) {
     param_obj['update_method'] = 'update_one'
     return LowdbCrudHelper.update_multi(this, param_obj)
   }
@@ -151,7 +170,7 @@ class LowdbCrud {
    *
    * @return {array} An uuid array of updated or inserted rows.
    */
-  upsert(param_obj = {}) {
+  upsert(param_obj) {
     return LowdbCrudHelper.upsert_multi(this, param_obj)
   }
 
@@ -175,7 +194,7 @@ class LowdbCrud {
    *
    * @return {array} An uuid array of deleted rows.
    */
-  delete(param_obj = {}) {
+  delete(param_obj) {
     return LowdbCrudHelper.delete_multi(this, param_obj)
   }
 
@@ -192,7 +211,7 @@ class LowdbCrud {
    *
    * @return {array} An array table names.
    */
-  list_table(param_obj = {}) {
+  list_table(param_obj) {
     return Object.keys(this.attr.db_obj.data)
   }
 
@@ -211,7 +230,7 @@ class LowdbCrud {
    *
    * @return {string} The deleted table name.
    */
-  delete_table(param_obj = {}) {
+  delete_table(param_obj) {
     return LowdbCrudHelper.delete_table(this, param_obj)
   }
 }

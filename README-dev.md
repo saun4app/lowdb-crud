@@ -25,7 +25,8 @@ npx jsdoc src -r -d src-jsdoc
 ```
 npx documentation src -r -d src-jsdoc
 npx documentation build src/lowdb-crud.js -f html --shallow -o src-docs
-npx documentation build src/lowdb-crud.js -f md --shallow -o src-docs-md
+npx documentation build src/lowdb-crud.js -f md --shallow -o lowdb-crud-doc.md
+npx documentation build src/lowdb-crud.js -f json --shallow -o lowdb-crud-doc.json
 
 npx documentation readme src/lowdb-crud.js  --section=Documentation
 

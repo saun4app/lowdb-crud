@@ -15,6 +15,14 @@ git commit -m "initial setup"
 git push -u origin main
 ```
 
+## node publishing
+```
+"publishConfig": {
+  "registry":"https://npm.pkg.github.com"
+},
+```
+
+
 ## jsdoc
 ```
 npx jsdoc src -r -d src-jsdoc

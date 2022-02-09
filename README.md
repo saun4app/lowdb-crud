@@ -1,12 +1,18 @@
 # lowdb-crud
 
 ## Installation
-
-    npm install lowdb-crud
-
+```
+npm install lowdb-crud
+```
 or
+```
+yarn add lowdb-crud
+```    
 
-    yarn add lowdb-crud
+## Import
+```
+import { LowdbCrud } from 'lowdb-crud'
+```
 
 ## Documentation
 

@@ -14,7 +14,6 @@ import { LowdbCrudHelper } from './lowdb-crud-helper.js'
  * The data of each table is stored in an <span style='color:blue'>array of objects</span>.
  * The <span style='color:blue'>table data structure</span> example below shows the data structure of 2 tables (<span style='color:blue'>person</span> and <span style='color:blue'>phone</span>).
  * Additionally, the <span style='color:blue'>database object</span>, <span style='color:blue'>data object</span>, and the <span style='color:blue'>table object</span> (see syntax example bellow) can be manipulated directly by using <a href='https://github.com/typicode/lowdb' target='_blank'>lowdb</a> and <a href='https://github.com/lodash/lodash' target='_blank'>lodash</a>.
- * In terms of testing, <a href='https://github.com/jasmine/jasmine-npm' target='_blank'>jasmine</a> can be used by default.  Other test frameworks may need additional configuration because <a href='https://github.com/typicode/lowdb' target='_blank'>lowdb 3</a> is a pure ESM package.
  *
  * @example
  *   Sample data:

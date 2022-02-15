@@ -6,6 +6,9 @@
 ```
 npx jasmine ./spec/lowdb-crud.test.js
 npx jasmine ./spec/lowdb-crud-helper.test.js
+
+npx jest ./__test__/lowdb-crud.test.js
+npx jest ./__test__/lowdb-crud-helper.test.js
 ```
 
 ## Git
@@ -13,6 +16,15 @@ npx jasmine ./spec/lowdb-crud-helper.test.js
 git add .
 git commit -m "initial setup"
 git push -u origin main
+```
+
+
+## lowdb
+```
+npx esbuild ./node_modules/lowdb/lib/index.js --bundle --platform=node --outfile=./src/lowdb-wrapper.js
+
+npx esbuild ./src/index.js --bundle --platform=node --outfile=./dist/index.js
+
 ```
 
 ## node publishing

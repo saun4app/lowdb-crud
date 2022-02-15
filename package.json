@@ -1,14 +1,12 @@
 {
   "name": "lowdb-crud",
-  "version": "1.0.0",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saun4app/lowdb-crud.git"
   },
-  "type": "module",
-  "types": "lib",
   "files": [
     "src",
     "!spec/**/*.test.*"
@@ -21,10 +19,13 @@
     "short-uuid": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
     "documentation": "^13.2.5",
     "dummy-json": "^3.0.4",
+    "esbuild": "^0.14.21",
     "fs-extra": "^10.0.0",
-    "jasmine": "^4.0.2"
+    "jest": "^27.5.1"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"

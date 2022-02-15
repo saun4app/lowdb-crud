@@ -9,9 +9,14 @@ or
 yarn add lowdb-crud
 ```    
 
-## Import
+
+## import or import
 ```
 import { LowdbCrud } from 'lowdb-crud'
+```
+or
+```
+const { LowdbCrud } = require('lowdb-crud')
 ```
 
 ## Documentation

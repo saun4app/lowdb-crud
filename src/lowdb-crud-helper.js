@@ -2,7 +2,7 @@ import FastestValidator from 'fastest-validator'
 import ShortUuid from 'short-uuid'
 
 import lodash from 'lodash'
-import { LowSync, JSONFileSync } from 'lowdb'
+import { LowSync, JSONFileSync } from './lowdb-wrapper.js'
 
 class ParamUtil {
   // ParamUtil.is_valid(schema_key, data_obj)

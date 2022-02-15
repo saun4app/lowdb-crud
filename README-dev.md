@@ -1,12 +1,7 @@
 # lowdb-crud
 
-
-
 ## Testing
 ```
-npx jasmine ./spec/lowdb-crud.test.js
-npx jasmine ./spec/lowdb-crud-helper.test.js
-
 npx jest ./__test__/lowdb-crud.test.js
 npx jest ./__test__/lowdb-crud-helper.test.js
 ```

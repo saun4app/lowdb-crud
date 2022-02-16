@@ -8,7 +8,7 @@ or
 
     yarn add lowdb-crud
 
-## import or import
+## import or require
 
     import { LowdbCrud } from 'lowdb-crud'
 

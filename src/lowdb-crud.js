@@ -131,7 +131,7 @@ class LowdbCrud {
    * @example
    *
    *   const param_obj = {'table_name': 'person',
-   *                      'value_filter_obj': { 'name': Drew },
+   *                      'value_filter_obj': { 'name': 'Drew' },
    *                      'update_obj': { 'name': 'Andrew' }}
    *
    *   const my_obj = new LowdbCrud({'db_file':'/home/my-app/data.json'})
@@ -157,7 +157,7 @@ class LowdbCrud {
    * @example
    *
    *   const param_obj = {'table_name': 'person',
-   *                      'value_filter_obj': { 'name': Drew },
+   *                      'value_filter_obj': { 'name': 'Drew' },
    *                      'update_obj': { 'name': 'Andrew' }}
    *
    *   const my_obj = new LowdbCrud({'db_file':'/home/my-app/data.json'})
@@ -182,7 +182,7 @@ class LowdbCrud {
    * @example
    *
    *   const param_obj = {'table_name': 'person',
-   *                    'value_filter_obj': { 'name': Drew }}
+   *                    'value_filter_obj': { 'name': 'Drew' }}
    *
    *   const my_obj = new LowdbCrud({'db_file':'/home/my-app/data.json'})
    *   const uuid_list = my_obj.delete(param_obj)

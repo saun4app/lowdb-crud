@@ -22,11 +22,17 @@ npx esbuild ./src/index.js --bundle --platform=node --outfile=./dist/index.js
 
 ```
 
+npx esbuild ./src/index.ts --bundle --platform=node --outfile=./dist/index.cjs
+
 ## node publishing
 ```
 "publishConfig": {
   "registry":"https://npm.pkg.github.com"
 },
+```
+
+```
+npm publish
 ```
 
 
